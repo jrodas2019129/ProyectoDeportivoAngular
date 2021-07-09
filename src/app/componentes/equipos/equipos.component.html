@@ -1,0 +1,28 @@
+<body>
+    <br>
+    <h2>Bienvenido, Agrega Un Equipo</h2>
+    <div class="buttons">
+        <button class="offset" routerLink="/listaLigas" routerLinkActive="active">Regresar</button>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-5">
+                <!--<form (ngSubmit)="registrar()">-->
+                <form class="box">
+                    <h1>Agregar Equipo</h1>
+                    <div class="mb-3">
+                        <label for="inputNombre" class="texto">Nombre</label>
+                        <input type="Nombre" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="modeloAgregarEquipo.nombre">
+                    </div>
+
+                    <br>
+                    <button type="reset" class="btn btn-primary" style="margin-left:20px" (click)="registroEquipo()">Registrar</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>

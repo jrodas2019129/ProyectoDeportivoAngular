@@ -1,0 +1,117 @@
+<body>
+    <div class="buttons">
+        <button class="offset" routerLink="/principal" routerLinkActive="active">Regresar</button>
+    </div>
+    <div class="card text-center" style="width: 35rem;">
+        <div class="card-header ">Tus Ligas</div>
+        <ul class="list-group list-group-flush " *ngFor="let hab of listaLigas">
+            <tr>
+                <td>{{hab.nombre}}</td><br>
+                <td>
+
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="right: 0">
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="btnradio1" data-bs-toggle="modal" data-bs-target="#exampleModalEditar" (click)="obtenerLiga(hab._id)">Editar</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio2" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar" (click)="obtenerLiga(hab._id)">Eliminar</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio3" data-bs-toggle="modal" data-bs-target="#exampleModalVer" (click)="obtenerLiga(hab._id)">ver</label>
+
+                    </div>
+
+                    <!-- <div class="buttons" role="group" aria-label="Basic mixed styles example" style="text-align: center;">
+                    <button type="button" class="offset" data-bs-toggle="modal" data-bs-target="#exampleModalEditar" (click)="obtenerLiga(hab._id)">Editar</button>
+                    <button type="button" class="offset" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar" (click)="obtenerLiga(hab._id)">Eliminar</button>
+                    <button type="button" class="offset" data-bs-toggle="modal" data-bs-target="#exampleModalVer" (click)="obtenerLiga(hab._id)">Ver</button>
+                </div>-->
+                </td>
+
+                <div class="buttons">
+
+                    <button class=" offset " routerLink="/equipos " routerLinkActive="active " (click)="buscarLigaNombre(hab.nombre)">Equipos</button>
+                    <button class=" offset " routerLink="/listaEquipos " routerLinkActive="active " (click)="buscarLigaNombre2(hab.nombre)">Agregar Equipos</button>
+                </div>
+                <ul class="list-group list-group-flush ">
+                    <li class="list-group-item "></li>
+                    <li class="list-group-item "></li>
+                </ul>
+                <br>
+
+
+                <br>
+            </tr>
+        </ul>
+
+    </div>
+
+    <!-- Modal Editar hotel -->
+    <div class="modal fade " id="exampleModalEditar " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+        <div class="modal-dialog ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel ">Editar Hotel</h5>
+                    <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
+                </div>
+                <div class="modal-body ">
+                    <form>
+                        <div class="mb-3 ">
+                            <label for="inputNombre " class="form-label ">Nombre</label>
+                            <input type="text " class="form-control " id="inputNombre " name="nombre " #nombre="ngModel" [(ngModel)]="ligaModel.nombre ">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">Close</button>
+                    <button type="button " class="btn btn-primary " data-bs-dismiss="modal " (click)="editarLiga() ">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ver Hotel -->
+    <div class="modal fade " id="exampleModalVer " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+        <div class="modal-dialog ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel ">Ver Hotel</h5>
+                    <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
+                </div>
+                <div class="modal-body ">
+                    <form>
+                        <div class="mb-3 ">
+                            <label for="inputNombre " class="form-label ">Nombre</label>
+                            <input type="text " class="form-control " id="inputNombre " name="nombre " #nombre="ngModel" [(ngModel)]="ligaModel.nombre " disabled>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Eliminar user-->
+    <div class="modal fade " id="exampleModalEliminar " tabindex="-1 " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+        <div class="modal-dialog ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel ">Modal title</h5>
+                    <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
+                </div>
+                <div class="modal-body ">
+                    Se eliminara de forma definitiva el usuario: {{ligaModel.nombre}}
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">Close</button>
+                    <button type="button " class="btn btn-primary " data-bs-dismiss="modal " (click)="eliminarLiga(ligaModel._id) ">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
